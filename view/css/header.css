@@ -1,0 +1,13 @@
+header{
+    background-color: #222;
+    padding: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header h2 {
+    color: rgb(226, 226, 226);
+    
+}

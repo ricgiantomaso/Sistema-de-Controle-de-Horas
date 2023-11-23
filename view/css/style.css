@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Poppins:wght@500&display=swap');
+
+
+body {
+    align-content: center;
+    font-family: Open Sans;
+}
+
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+body main .input_hour_system .form_input button {
+    align-items: center;
+    width: 90%;
+    height: 15%;
+    font-size: 14pt;
+    margin-top: 4px;
+    
+}
+
+body main .input_hour_system h4 {
+    align-items: center;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: center;
+    
+}
+
+body main .input_hour_system .info {
+    align-items: center;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    font-size: 25px;
+    
+}
+
+
+
