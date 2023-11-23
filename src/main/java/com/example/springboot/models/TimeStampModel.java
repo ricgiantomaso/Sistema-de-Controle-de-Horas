@@ -4,13 +4,12 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 
-import java.sql.Timestamp;
 import java.util.UUID;
 
 
 @Entity
 @Table(name = "time_stamps")
-public class NoteTime implements Serializable {
+public class TimeStampModel implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -18,7 +17,7 @@ public class NoteTime implements Serializable {
     private UUID idTimeStamp;
     private String name;
     private String role;
-    private Timestamp timeStamp;
+    private String timeStamp;
 
     public UUID getIdTimeStamp() {
         return idTimeStamp;
@@ -44,11 +43,11 @@ public class NoteTime implements Serializable {
         this.role = role;
     }
 
-    public Timestamp getTimeStamp() {
+    public String getTimeStamp() {
         return timeStamp;
     }
 
-    public void setTimeStamp(Timestamp timeStamp) {
+    public void setTimeStamp(String timeStamp) {
         this.timeStamp = timeStamp;
     }
 }
