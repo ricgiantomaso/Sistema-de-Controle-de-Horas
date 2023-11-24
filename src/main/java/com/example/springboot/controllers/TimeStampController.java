@@ -35,16 +35,38 @@ public class TimeStampController {
         return ResponseEntity.status(HttpStatus.OK).body(timeStampRepository.findAll());
     }
 
+    //get one
     @GetMapping("/timestamps/{id}")
     public ResponseEntity<Object> getOneTimeStamp(@PathVariable(value="id") UUID id) {
         Optional<TimeStampModel> timeStampO = timeStampRepository.findById(id);
         if (timeStampO.isEmpty()){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Time Stamp not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Time Stamp not found.");
         }
         return ResponseEntity.status(HttpStatus.OK).body(timeStampO.get());
     }
 
+    @PutMapping("/timestamps/{id}")
+    public ResponseEntity<Object> putTimeStamp(@PathVariable(value="id") UUID id,
+                                               @RequestBody @Valid TimeStampRecordDto timeStampRecordDto) {
+        Optional<TimeStampModel> timeStampO = timeStampRepository.findById(id);
+        if (timeStampO.isEmpty()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Time Stamp not found.");
+        }
+        var timeStampModel = timeStampO.get();
+        BeanUtils.copyProperties(timeStampRecordDto, timeStampModel);
+        return ResponseEntity.status(HttpStatus.OK).body(timeStampRepository.save(timeStampModel));
+    }
 
+    @DeleteMapping("/timestamps/{id}")
+    public ResponseEntity<Object> putTimeStamp(@PathVariable(value="id") UUID id) {
+        Optional<TimeStampModel> timeStampO = timeStampRepository.findById(id);
+        if (timeStampO.isEmpty()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Time Stamp not found.");
+        }
+        timeStampRepository.delete(timeStampO.get());
+        return ResponseEntity.status(HttpStatus.OK).body("Time stamp deleted successfully.");
+    }
 
+    
 
 }

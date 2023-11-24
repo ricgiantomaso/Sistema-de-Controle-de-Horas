@@ -4,8 +4,11 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 
+import java.util.Locale;
 import java.util.UUID;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 @Table(name = "time_stamps")
@@ -15,9 +18,9 @@ public class TimeStampModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID idTimeStamp;
+    private String timeStamp = generateTimeStamp();
     private String name;
     private String role;
-    private String timeStamp;
 
     public UUID getIdTimeStamp() {
         return idTimeStamp;
@@ -49,5 +52,12 @@ public class TimeStampModel implements Serializable {
 
     public void setTimeStamp(String timeStamp) {
         this.timeStamp = timeStamp;
+    }
+
+    public String generateTimeStamp(){
+        LocalDateTime myDateObj = LocalDateTime.now();
+        DateTimeFormatter formattedDate = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        timeStamp = myDateObj.format(formattedDate);
+        return timeStamp;
     }
 }
